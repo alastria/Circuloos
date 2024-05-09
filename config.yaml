@@ -1,0 +1,5 @@
+SERVICE_NAME: "Test solidity"
+PORT: 3000
+LOG_LEVELS:
+  LOG_LEVEL_SYSTEM: 'debug'
+  LOG_LEVEL_FILE: 'info'
