@@ -1,5 +1,11 @@
 SERVICE_NAME: "Test solidity"
 PORT: 3000
+NETWORK: redB
+CONTRACTS:
+  - name: SingleStorage
+    address: '0x8e6f738106350828187f931CC6c645F30Ec9aBd7'
+  - name: StructStorage
+    address: '0xb206a3a12119F76277F5b4D6F6C56aAee76B58bE'
 LOG_LEVELS:
   LOG_LEVEL_SYSTEM: 'debug'
   LOG_LEVEL_FILE: 'info'

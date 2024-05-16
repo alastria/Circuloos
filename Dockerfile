@@ -4,5 +4,9 @@ WORKDIR /app
 COPY ./package.json /app/package.json
 RUN npm install
 
-COPY ./src /app/src
+COPY ./contracts /app/contracts
+COPY ./hardhat.config.js /app/hardhat.config.js
+RUN npm run build
+
+COPY . /app
 CMD ["npm", "start"]

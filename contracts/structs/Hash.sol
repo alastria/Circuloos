@@ -3,4 +3,5 @@ pragma solidity ^0.8.24;
 
 struct Hash {
   string storedHash;
+  uint256 number;
 }
