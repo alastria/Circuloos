@@ -66,7 +66,7 @@ module.exports = {
   networks: {
     hardhat: {},
     redB: {
-      url: "http://85.215.220.113:8545/",
+      url: "http://194.164.195.39:8545/",
       accounts: [ethers.Wallet.createRandom().privateKey],
     },
   },

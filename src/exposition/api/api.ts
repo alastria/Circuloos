@@ -40,7 +40,6 @@ app.get("/:contractName/retrieve", async (req, res) => {
   } catch (err: any) {
     logger.error(err);
     res.status(500).send("An error occurred.");
-    throw (err);
   }
 });
 

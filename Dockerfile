@@ -5,7 +5,8 @@ COPY ./package.json /app/package.json
 RUN npm install
 
 COPY ./contracts /app/contracts
-COPY ./hardhat.config.js /app/hardhat.config.js
+COPY tsconfig.json /app/tsconfig.json
+COPY ./hardhat.config.ts /app/hardhat.config.ts
 RUN npm run build
 
 COPY . /app
