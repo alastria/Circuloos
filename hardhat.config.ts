@@ -3,37 +3,18 @@ import "@nomicfoundation/hardhat-ethers";
 
 import { HardhatEthersProvider } from "@nomicfoundation/hardhat-ethers/internal/hardhat-ethers-provider";
 import { extendEnvironment } from "hardhat/config";
-import { EthereumProvider } from "hardhat/types/provider";
 import { createProvider } from "hardhat/internal/core/providers/construction";
 import { ethers } from "ethers";
 
 extendEnvironment((hre) => {
-  // We add a field to the Hardhat Runtime Environment here.
-  // We use lazyObject to avoid initializing things until they are actually
-  // needed.
-  const providers: { [name: string]: EthereumProvider } = {};
-
-  hre.getProvider = async function getProvider(
-    name: string
-  ): Promise<EthereumProvider> {
-    if (!providers[name]) {
-      providers[name] = await createProvider(this.config, name, this.artifacts);
-    }
-    return providers[name];
-  };
-
   hre.changeNetwork = async function changeNetwork(newNetwork: string) {
     if (!this.config.networks[newNetwork]) {
       throw new Error(`changeNetwork: Couldn't find network '${newNetwork}'`);
     }
 
-    if (!providers[this.network.name]) {
-      providers[this.network.name] = this.network.provider;
-    }
-
     this.network.name = newNetwork;
     this.network.config = this.config.networks[newNetwork];
-    this.network.provider = await this.getProvider(newNetwork);
+    this.network.provider = await createProvider(this.config, newNetwork, this.artifacts);
 
     if (this.ethers) {
       this.ethers.provider = new HardhatEthersProvider(
@@ -66,8 +47,12 @@ module.exports = {
   networks: {
     hardhat: {},
     redB: {
-      url: "http://194.164.195.39:8545/",
+      url: "http://63.33.55.29",
       accounts: [ethers.Wallet.createRandom().privateKey],
+      httpHeaders: {
+        // This API Key is for the NGINX Reverse Proxy that allows serverless applications to communicate with the Red B Node.
+        "X-APIkey": ''
+      }
     },
   },
 };

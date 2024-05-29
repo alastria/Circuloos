@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "3ae1dfac-dc75-4a11-aaad-41906ce6d885",
+		"name": "Circuloos Example Contract Calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33270317"
+	},
+	"item": [
+		{
+			"name": "Struct Storage - Retrieve Value",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/StructStorage/retrieve",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"StructStorage",
+						"retrieve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single Storage - Retrieve Value",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/SingleStorage/retrieve",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SingleStorage",
+						"retrieve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Struct Storage - Store Value",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"args\": [\n        {\n            \"storedHash\": \"0x38ccc0e6a6c761061354a1685de41fa17dcd98d839f50c33db3956027c8fb105\",\n            \"number\": \"1237461283746821736481632\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/StructStorage/store",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"StructStorage",
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single Storage - Store Value",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"args\": [\n        \"0x38ccc0e6a6c761061354a1685de41fa17dcd98d839f50c33db3956027c8fb105\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/SingleStorage/store",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"SingleStorage",
+						"store"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{api-key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://qg6gp2ghrw.eu-west-1.awsapprunner.com"
+		},
+		{
+			"key": "api-key",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

@@ -5,9 +5,24 @@ import {
   ContractTransactionResponse,
 } from "ethers";
 
+// Format is 'key': enabled
+const apiKeys: { [key: string]: boolean } = {};
+
 const app: Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Super basic API Key authentication middleware.
+app.use((req, res, next) => {
+  const apiKey = req.headers["x-api-key"];
+
+  if (!apiKey || Array.isArray(apiKey) || !apiKeys[apiKey]) {
+    res.status(403).send("Forbidden");
+    return;
+  }
+
+  next();
+});
 
 let logger: Logger;
 let config: any;
@@ -16,9 +31,9 @@ let contracts: any;
 app.get("/:contractName/retrieve", async (req, res) => {
   logger.info(`GET /${req.params.contractName}/retrieve`);
   logger.debug(
-    `GET /${req.params.contractName}/retrieve ${JSON.stringify(req.headers)} ${JSON.stringify(
-      req.query
-    )} ${JSON.stringify(req.body)}`
+    `GET /${req.params.contractName}/retrieve ${JSON.stringify(
+      req.headers
+    )} ${JSON.stringify(req.query)} ${JSON.stringify(req.body)}`
   );
 
   try {
@@ -46,9 +61,9 @@ app.get("/:contractName/retrieve", async (req, res) => {
 app.post("/:contractName/store", async (req, res) => {
   logger.info(`POST /${req.params.contractName}/store`);
   logger.debug(
-    `POST /${req.params.contractName}/store ${JSON.stringify(req.headers)} ${JSON.stringify(
-      req.query
-    )} ${JSON.stringify(req.body)}`
+    `POST /${req.params.contractName}/store ${JSON.stringify(
+      req.headers
+    )} ${JSON.stringify(req.query)} ${JSON.stringify(req.body)}`
   );
 
   try {
