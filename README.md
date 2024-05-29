@@ -1,13 +1,7 @@
-# Sample Hardhat Project
+# Circuloos Smart Contract API Example
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+This repository holds some example smart contracts for Circuloos, as well as a service that exposes the methods of the smart contract over HTTP to allow other applications to directly talk with the smart contracts in a RESTful manner.
 
-Try running some of the following tasks:
+# [How to use - WIKI](https://github.com/alastria/Circuloos/wiki)
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
-```
+How to instructions are in the [WIKI](https://github.com/alastria/Circuloos/wiki) of this repo# Circuloos Smart Contract API Example
